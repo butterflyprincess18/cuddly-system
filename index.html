@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menjelajah Dinamika Bumi | Geografi Kelas X Fase E</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Animasi Melayang untuk Seluruh Bumi */
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Animasi Denyut Cahaya untuk Inti Dalam */
+        .core-pulse { animation: pulse-glow 3s ease-in-out infinite alternate; }
+        @keyframes pulse-glow {
+            0% { fill: #FFEB3B; filter: drop-shadow(0 0 10px rgba(255,235,59,0.5)); transform: scale(1); transform-origin: center; }
+            100% { fill: #FFF59D; filter: drop-shadow(0 0 30px rgba(255,235,59,0.9)); transform: scale(1.05); transform-origin: center; }
+        }
+        
+        /* Efek Visual Hover pada Lapisan SVG (Hanya sorotan visual, tidak mengubah teks) */
+        .earth-layer {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .earth-layer:hover {
+            filter: brightness(1.15);
+            stroke: #ffffff;
+            stroke-width: 2px;
+        }
+        
+        /* Transisi Single Page Application (Beranda <-> Eksplorasi) */
+        .view-section {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hidden-view {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+            z-index: -1;
+        }
+        .active-view {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 w-full h-screen overflow-hidden relative selection:bg-emerald-500 selection:text-white">
+
+    <!-- ==================== 1. HOME VIEW ==================== -->
+    <main id="home-view" class="view-section active-view flex flex-col items-center justify-center px-6">
+        <div class="text-center flex flex-col items-center">
+            <span class="mb-6 inline-block px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/60 text-xs font-semibold tracking-widest text-slate-300 uppercase">Geografi &middot; Kelas X &middot; Fase E</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4">
+                <span class="block text-slate-100">Menjelajah</span>
+                <span class="block text-emerald-400 mt-2">Dinamika Bumi.</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Media pembelajaran interaktif untuk memahami struktur lapisan Bumi dan dinamika litosfer, lengkap dengan materi, video, kuis, dan proyek.
+            </p>
+            <button onclick="startExploration()" class="mt-10 px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold rounded-full transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] transform hover:-translate-y-1">
+                Mulai Eksplorasi
+            </button>
+        </div>
+    </main>
+
+    <!-- ==================== 2. EXPLORE VIEW (Animasi Bumi) ==================== -->
+    <section id="explore-view" class="view-section hidden-view flex flex-col md:flex-row items-center justify-between p-8 lg:p-20">
+        
+        <button onclick="goHome()" class="absolute top-8 left-8 flex items-center text-slate-400 hover:text-emerald-400 transition-colors z-20">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Kembali ke Beranda
+        </button>
+
+        <!-- Kiri: Panel Informasi Kaca -->
+        <div class="w-full md:w-1/2 max-w-lg z-10 bg-slate-800/50 backdrop-blur-xl border border-slate-700 p-8 rounded-3xl shadow-2xl mt-16 md:mt-0">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-slate-700/50 border border-slate-600 mb-6">
+                <span id="layer-color-indicator" class="w-3 h-3 rounded-full bg-slate-400 mr-2"></span>
+                <span class="text-xs font-semibold tracking-wider text-slate-300 uppercase">Panel Interaktif</span>
+            </div>
+            
+            <h2 id="info-title" class="text-4xl font-bold text-slate-100 mb-4 transition-all">Pilih Lapisan Bumi</h2>
+            <p id="info-desc" class="text-slate-400 leading-relaxed text-lg mb-8 transition-all min-h-[120px]">
+                Klik salah satu lapisan di diagram bumi untuk mengunci informasi struktur internal dan membuka halaman materi yang sesuai.
+            </p>
+            
+            <button id="module-btn" onclick="openModule()" class="hidden inline-flex items-center justify-center px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold rounded-full transition-colors w-full sm:w-auto text-center shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                <span id="module-btn-text">Mulai Modul Ini</span>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+
+        <!-- Kanan: Diagram Bumi Interaktif (SVG) -->
+        <div class="w-full md:w-1/2 flex justify-end items-center h-full relative mt-12 md:mt-0">
+            <div class="w-full max-w-[600px] aspect-square relative animate-float">
+                <svg viewBox="0 0 500 500" class="w-full h-full drop-shadow-2xl overflow-visible">
+                    <circle cx="500" cy="250" r="450" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="10 15" class="animate-[spin_120s_linear_infinite] origin-[500px_250px]" />
+                    <circle cx="500" cy="250" r="350" fill="#8B5A2B" class="earth-layer drop-shadow-lg" data-layer="crust" />
+                    <circle cx="500" cy="250" r="280" fill="#A0522D" class="earth-layer drop-shadow-md" data-layer="lithosphere" />
+                    <circle cx="500" cy="250" r="210" fill="#D32F2F" class="earth-layer drop-shadow-md" data-layer="mantle" />
+                    <circle cx="500" cy="250" r="140" fill="#F57C00" class="earth-layer drop-shadow-md" data-layer="outerCore" />
+                    <circle cx="500" cy="250" r="70" fill="#FFEB3B" class="earth-layer core-pulse" data-layer="innerCore" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== JAVASCRIPT ROUTING KE FILE HTML TERPISAH ==================== -->
+    <script>
+        /* ---- 1. PEMETAAN DATA & FILE HTML TUJUAN ---- */
+        const layerData = {
+            crust: {
+                title: "Kerak Bumi",
+                desc: "Lapisan paling luar Bumi yang relatif tipis dan tersusun atas batuan padat. Terdiri atas kerak benua (rata-rata sekitar 35 km) dan kerak samudra (sekitar 5-10 km).",
+                color: "#8B5A2B",
+                btnText: "Pelajari Batuan & Mineral",
+                targetUrl: "crust.html"
+            },
+            lithosphere: {
+                title: "Mantel Luar",
+                desc: "Lapisan terluar Bumi yang bersifat kaku, terdiri atas kerak dan bagian paling atas mantel. Lapisan ini terbagi menjadi lempeng-lempeng tektonik yang bergerak perlahan.",
+                color: "#A0522D",
+                btnText: "Pelajari Mantel Luar",
+                targetUrl: "lithosphere.html"
+            },
+            mantle: {
+                title: "Mantel Dalam",
+                desc: "Lapisan terbesar Bumi berdasarkan volume (sekitar 2.900 km), sebagian besar padat tetapi dapat berdeformasi perlahan. Pergerakan materialnya berhubungan dengan pergerakan lempeng tektonik.",
+                color: "#D32F2F",
+                btnText: "Pelajari Mantel Dalam",
+                targetUrl: "mantle.html"
+            },
+            outerCore: {
+                title: "Inti Luar",
+                desc: "Lapisan cair yang tersusun terutama atas besi dan nikel. Pergerakan materialnya bersama rotasi Bumi berperan membentuk medan magnet Bumi.",
+                color: "#F57C00",
+                btnText: "Pelajari Inti Luar",
+                targetUrl: "outer-core.html"
+            },
+            innerCore: {
+                title: "Inti Dalam",
+                desc: "Pusat Bumi berjari-jari sekitar 1.220 km yang berwujud padat akibat tekanan yang sangat besar, meskipun suhunya sangat tinggi.",
+                color: "#FBC02D",
+                btnText: "Pelajari Inti Dalam",
+                targetUrl: "inner-core.html"
+            }
+        };
+
+        const infoTitle = document.getElementById('info-title');
+        const infoDesc = document.getElementById('info-desc');
+        const colorIndicator = document.getElementById('layer-color-indicator');
+        const moduleBtn = document.getElementById('module-btn');
+        const moduleBtnText = document.getElementById('module-btn-text');
+        const layers = document.querySelectorAll('.earth-layer');
+        let currentSelectedLayer = '';
+
+        /* ---- 2. EVENT KLIK LAPISAN SVG (KUNCI PILIHAN) ---- */
+        layers.forEach(layer => {
+            layer.addEventListener('click', function(event) {
+                event.stopPropagation();
+                
+                currentSelectedLayer = this.getAttribute('data-layer');
+                const data = layerData[currentSelectedLayer];
+                
+                infoTitle.innerHTML = `${data.title} <span class="align-middle inline-block text-xs font-bold bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full ml-2 border border-emerald-500/30">TERPILIH</span>`;
+                infoDesc.textContent = data.desc;
+                colorIndicator.style.backgroundColor = data.color;
+                
+                moduleBtnText.textContent = data.btnText;
+                moduleBtn.classList.remove('hidden');
+            });
+        });
+
+        /* ---- 3. PENGALIHAN KE FILE HTML MATERI ---- */
+        function openModule() {
+            if (!currentSelectedLayer || !layerData[currentSelectedLayer]) return;
+            window.location.href = layerData[currentSelectedLayer].targetUrl;
+        }
+
+        /* ---- 4. NAVIGASI BERANDA <-> EKSPLORASI ---- */
+        const homeView = document.getElementById('home-view');
+        const exploreView = document.getElementById('explore-view');
+
+        function startExploration() {
+            homeView.classList.replace('active-view', 'hidden-view');
+            setTimeout(() => exploreView.classList.replace('hidden-view', 'active-view'), 500);
+        }
+
+        function goHome() {
+            exploreView.classList.replace('active-view', 'hidden-view');
+            setTimeout(() => {
+                homeView.classList.replace('hidden-view', 'active-view');
+                infoTitle.textContent = "Pilih Lapisan Bumi";
+                infoDesc.textContent = "Klik salah satu lapisan di diagram bumi untuk mengunci informasi struktur internal dan membuka halaman materi yang sesuai.";
+                colorIndicator.style.backgroundColor = "#94a3b8";
+                moduleBtn.classList.add('hidden');
+                currentSelectedLayer = '';
+            }, 500);
+        }
+
+        /* ---- 5. DETEKSI HASH #explore SAAT KEMBALI DARI FILE MATERI ---- */
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash === '#explore') {
+                homeView.classList.replace('active-view', 'hidden-view');
+                exploreView.classList.replace('hidden-view', 'active-view');
+            }
+        });
+    </script>
+</body>
+</html>

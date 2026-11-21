@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul: Inti Dalam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .glass-panel { background: rgba(30,41,59,.6); backdrop-filter: blur(16px); border: 1px solid rgba(71,85,105,.5); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); }
+        .tab-content { animation: fadeIn .4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+    </style>
+</head>
+<body>
+<script>
+window.MODULE = {
+  key: 'inner-core',
+  title: 'Inti Dalam (Inner Core)',
+  subtitle: 'Jelajahi pusat bumi yang padat dan bagaimana kita mengetahuinya lewat gelombang seismik.',
+  glow1: 'bg-yellow-500/10', glow2: 'bg-orange-500/10', dot: 'bg-yellow-400',
+  videoKey: 'inti',
+  videoIntro: 'Tonton animasi singkat untuk memahami bagaimana gelombang gempa membantu ilmuwan memetakan bagian dalam bumi.',
+  materi: `
+    <p>Inti dalam merupakan bagian terdalam Bumi, di pusat planet, dengan radius sekitar 1.220 km. Lapisan ini tersusun terutama atas besi dan nikel. Meskipun suhunya sangat tinggi, materialnya tetap padat akibat tekanan yang sangat besar di pusat Bumi.</p>
+    <ul class="list-disc list-inside space-y-1"><li>Berada di pusat Bumi.</li><li>Radius sekitar 1.220 km.</li><li>Tersusun terutama atas besi dan nikel.</li><li>Padat akibat tekanan sangat tinggi.</li></ul>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Bagaimana Kita Mengetahuinya?</h3>
+    <p>Belum ada yang bisa mengebor sedalam itu. Pengetahuan kita berasal dari analisis gelombang seismik gempa bumi:</p>
+    <ul class="list-disc list-inside space-y-2">
+      <li><strong>Gelombang P</strong> (primer) dapat merambat melalui padat dan cair.</li>
+      <li><strong>Gelombang S</strong> (sekunder) hanya merambat melalui benda padat, sehingga tidak melewati inti luar yang cair.</li>
+    </ul>
+    <p>Perubahan kecepatan dan pembelokan gelombang menunjukkan batas antarlapisan. Pada 1936, ahli seismologi Inge Lehmann menyimpulkan adanya inti dalam yang padat dari pola gelombang P.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Peran Inti Dalam</h3>
+    <p>Inti dalam tumbuh perlahan seiring pendinginan bumi. Proses pembekuannya melepaskan panas dan material ringan yang ikut menggerakkan aliran di inti luar, sehingga berperan menjaga medan magnet bumi.</p>`,
+  quiz: [
+    { q: 'Mengapa inti dalam berwujud padat meski sangat panas?', options: ['Suhunya rendah', 'Tekanannya sangat besar', 'Terdiri dari batuan beku', 'Tidak ada gelombang di sana'], answer: 1, explain: 'Tekanan ekstrem menjaga logam di inti dalam tetap padat.' },
+    { q: 'Gelombang seismik yang tidak dapat melewati inti luar adalah...', options: ['Gelombang P', 'Gelombang S', 'Gelombang radio', 'Gelombang laut'], answer: 1, explain: 'Gelombang S hanya merambat di benda padat, sedangkan inti luar cair.' },
+    { q: 'Tokoh yang menyimpulkan adanya inti dalam padat pada 1936 adalah...', options: ['Alfred Wegener', 'Inge Lehmann', 'Charles Richter', 'Harry Hess'], answer: 1, explain: 'Inge Lehmann menganalisis gelombang P dan menemukan inti dalam.' },
+    { q: 'Unsur utama penyusun inti dalam adalah...', options: ['Besi dan nikel', 'Silikon dan oksigen', 'Kalsium dan magnesium', 'Karbon dan belerang'], answer: 0, explain: 'Inti bumi didominasi besi dan nikel.' },
+    { q: 'Cara utama ilmuwan mempelajari bagian dalam bumi adalah dengan...', options: ['Pengeboran sampai pusat bumi', 'Analisis gelombang seismik', 'Foto satelit permukaan', 'Pengambilan sampel laut'], answer: 1, explain: 'Gelombang gempa yang merambat melalui bumi menjadi data utama struktur dalam bumi.' }
+  ],
+  project: {
+    title: 'Model Struktur Bumi dan Jalur Gelombang Seismik',
+    desc: 'Buat model lapisan bumi berskala sederhana dan gambarkan perambatan gelombang P dan S untuk menjelaskan bagaimana inti bumi diketahui.',
+    steps: ['Cari data ketebalan tiap lapisan bumi dari sumber terpercaya.', 'Buat model (gambar penampang, plastisin berlapis, atau digital) dengan skala yang konsisten.', 'Gambarkan jalur gelombang P dan S serta zona bayangan gelombang S.', 'Beri label tiap lapisan lengkap dengan wujud dan suhunya.', 'Presentasikan: jelaskan bukti keberadaan inti luar cair dan inti dalam padat.'],
+    rubric: ['Akurasi data dan skala model', 'Ketepatan diagram gelombang seismik', 'Kejelasan penjelasan bukti ilmiah', 'Kreativitas dan kerapian']
+  }
+};
+</script>
+<script src="module.js"></script>
+</body>
+</html>

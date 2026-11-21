@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul: Inti Luar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .glass-panel { background: rgba(30,41,59,.6); backdrop-filter: blur(16px); border: 1px solid rgba(71,85,105,.5); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); }
+        .tab-content { animation: fadeIn .4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+    </style>
+</head>
+<body>
+<script>
+window.MODULE = {
+  key: 'outer-core',
+  title: 'Inti Luar (Outer Core)',
+  subtitle: 'Pelajari lapisan cair penghasil medan magnet pelindung bumi.',
+  glow1: 'bg-orange-500/10', glow2: 'bg-yellow-500/10', dot: 'bg-orange-500',
+  videoKey: 'inti',
+  videoIntro: 'Tonton animasi singkat tentang bagaimana aliran logam cair di inti luar menghasilkan medan magnet bumi.',
+  materi: `
+    <p>Inti luar terletak di antara mantel dan inti dalam, pada kedalaman sekitar 2.900–5.150 km. Lapisan ini tersusun terutama atas besi dan nikel serta unsur lain dalam jumlah lebih kecil. Berbeda dengan mantel dan inti dalam, inti luar berada dalam keadaan cair.</p>
+    <ul class="list-disc list-inside space-y-1"><li>Kedalaman sekitar 2.900–5.150 km.</li><li>Tersusun terutama atas besi dan nikel.</li><li>Berwujud cair.</li><li>Pergerakan materialnya berperan membentuk medan magnet Bumi.</li></ul>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Geodinamo</h3>
+    <p>Pergerakan material logam cair di inti luar, bersama rotasi Bumi, berperan menghasilkan medan magnet Bumi melalui proses yang dikenal sebagai geodynamo.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Magnetosfer</h3>
+    <p>Medan magnet bumi meluas ke antariksa membentuk magnetosfer. Lapisan ini membelokkan sebagian besar partikel bermuatan dari angin matahari sehingga atmosfer dan makhluk hidup terlindungi.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Fenomena dan Pemanfaatan</h3>
+    <ul class="list-disc list-inside space-y-2">
+      <li><strong>Aurora</strong>: cahaya di daerah kutub saat partikel matahari berinteraksi dengan atmosfer di sekitar medan magnet.</li>
+      <li><strong>Kompas</strong>: jarum magnet menunjuk ke arah utara magnetik bumi sebagai alat navigasi.</li>
+      <li><strong>Paleomagnetisme</strong>: rekaman arah magnet pada batuan membantu para ilmuwan mempelajari pergerakan lempeng masa lalu.</li>
+    </ul>
+    <p>Kutub magnet bumi tidak tetap. Posisinya bergeser perlahan, dan dalam rentang waktu geologis polaritasnya pernah berbalik.</p>`,
+  quiz: [
+    { q: 'Inti luar bumi berwujud...', options: ['Padat', 'Cair', 'Gas', 'Plastis'], answer: 1, explain: 'Inti luar berupa logam cair, terutama besi dan nikel.' },
+    { q: 'Medan magnet bumi dihasilkan oleh...', options: ['Aliran logam cair di inti luar', 'Aktivitas gunung api', 'Gerakan lempeng', 'Angin matahari'], answer: 0, explain: 'Aliran logam cair dan rotasi bumi menciptakan geodinamo.' },
+    { q: 'Fungsi utama magnetosfer adalah...', options: ['Menahan hujan', 'Membelokkan partikel bermuatan dari matahari', 'Menghangatkan kerak', 'Membentuk awan'], answer: 1, explain: 'Magnetosfer melindungi bumi dari angin matahari.' },
+    { q: 'Cahaya aurora terlihat terutama di daerah...', options: ['Khatulistiwa', 'Gurun', 'Kutub', 'Pegunungan tinggi'], answer: 2, explain: 'Garis medan magnet mengarahkan partikel ke atmosfer di sekitar kutub.' },
+    { q: 'Unsur utama penyusun inti luar adalah...', options: ['Silikon dan oksigen', 'Besi dan nikel', 'Aluminium dan kalsium', 'Karbon dan hidrogen'], answer: 1, explain: 'Inti luar didominasi campuran besi dan nikel.' }
+  ],
+  project: {
+    title: 'Membuat Kompas Sederhana',
+    desc: 'Buat kompas dari bahan sederhana untuk membuktikan keberadaan medan magnet bumi, lalu jelaskan hubungannya dengan inti luar.',
+    steps: ['Siapkan jarum jahit, magnet kecil, gabus tipis atau daun, dan mangkuk berisi air.', 'Gosok jarum searah dengan magnet sekitar 30 kali agar termagnetisasi.', 'Letakkan jarum di atas gabus lalu apungkan di air tenang.', 'Amati arah jarum setelah diam dan bandingkan dengan kompas ponsel atau kompas asli.', 'Tulis laporan singkat: hasil pengamatan dan penjelasan mengapa jarum menunjuk utara-selatan.'],
+    rubric: ['Kesesuaian prosedur percobaan', 'Ketepatan hasil dan pengamatan', 'Penjelasan konsep medan magnet bumi', 'Kualitas laporan']
+  }
+};
+</script>
+<script src="module.js"></script>
+</body>
+</html>

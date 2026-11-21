@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul: Kerak Bumi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .glass-panel { background: rgba(30,41,59,.6); backdrop-filter: blur(16px); border: 1px solid rgba(71,85,105,.5); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); }
+        .tab-content { animation: fadeIn .4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+    </style>
+</head>
+<body>
+<script>
+window.MODULE = {
+  key: 'crust',
+  title: 'Kerak Bumi (Crust)',
+  subtitle: 'Pelajari batuan dan mineral penyusun lapisan tempat kita berpijak.',
+  glow1: 'bg-amber-700/10', glow2: 'bg-emerald-600/10', dot: 'bg-amber-600',
+  videoKey: 'kerak',
+  videoIntro: 'Tonton animasi singkat untuk memahami bagaimana batuan terbentuk dan berubah dalam siklus batuan.',
+  materi: `
+    <p>Kerak bumi merupakan lapisan paling luar Bumi yang relatif tipis dan tersusun atas batuan padat. Lapisan ini menjadi tempat berlangsungnya berbagai aktivitas kehidupan serta fenomena geologi, seperti gempa bumi, aktivitas vulkanik, dan pembentukan pegunungan.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Kerak Benua dan Kerak Samudra</h3>
+    <ul class="list-disc list-inside space-y-2">
+      <li><strong>Kerak benua (continental crust)</strong>: membentuk wilayah daratan, ketebalan rata-rata sekitar 35 km, umumnya lebih kaya silika dan aluminium.</li>
+      <li><strong>Kerak samudra (oceanic crust)</strong>: membentuk dasar samudra, ketebalan umumnya sekitar 5–10 km, relatif lebih kaya mineral yang mengandung magnesium dan besi.</li>
+    </ul>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Karakteristik Kerak Bumi</h3>
+    <ul class="list-disc list-inside space-y-1"><li>Lapisan paling luar Bumi.</li><li>Tersusun atas batuan padat.</li><li>Ketebalannya bervariasi.</li><li>Tempat berlangsungnya proses geologi dan aktivitas kehidupan.</li></ul>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Mineral</h3>
+    <p>Mineral adalah zat padat alami, anorganik, dengan komposisi kimia dan struktur kristal tertentu. Contoh: kuarsa, feldspar, mika, kalsit.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Tiga Jenis Batuan</h3>
+    <ul class="list-disc list-inside space-y-2">
+      <li><strong>Batuan beku</strong>: terbentuk dari pembekuan magma/lava. Contoh: granit (beku dalam), basalt (beku luar), obsidian.</li>
+      <li><strong>Batuan sedimen</strong>: terbentuk dari pengendapan dan pemadatan material hasil pelapukan dan erosi. Contoh: batu pasir, batu gamping, serpih.</li>
+      <li><strong>Batuan metamorf</strong>: batuan yang berubah akibat panas dan tekanan tinggi tanpa melebur. Contoh: marmer, sabak, gneiss.</li>
+    </ul>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Siklus Batuan</h3>
+    <p>Batuan tidak statis. Batuan beku dapat lapuk menjadi sedimen, sedimen dapat berubah menjadi metamorf, dan metamorf dapat melebur kembali menjadi magma, lalu membeku menjadi batuan beku lagi. Siklus ini digerakkan oleh energi dari dalam bumi dan dari luar (cuaca dan erosi).</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Manfaat bagi Manusia</h3>
+    <p>Batuan dan mineral menjadi bahan bangunan, logam, bahan tambang, dan dasar pembentukan tanah yang menunjang pertanian.</p>`,
+  quiz: [
+    { q: 'Batuan yang terbentuk dari pembekuan magma disebut...', options: ['Batuan sedimen', 'Batuan beku', 'Batuan metamorf', 'Batuan organik'], answer: 1, explain: 'Batuan beku berasal dari pendinginan dan pembekuan magma atau lava.' },
+    { q: 'Marmer terbentuk dari perubahan batu gamping akibat panas dan tekanan. Marmer termasuk batuan...', options: ['Beku luar', 'Beku dalam', 'Sedimen', 'Metamorf'], answer: 3, explain: 'Perubahan akibat panas dan tekanan tanpa peleburan menghasilkan batuan metamorf.' },
+    { q: 'Manakah yang merupakan contoh batuan sedimen?', options: ['Granit', 'Basalt', 'Batu pasir', 'Gneiss'], answer: 2, explain: 'Batu pasir terbentuk dari pengendapan dan pemadatan butiran pasir.' },
+    { q: 'Kerak bumi yang lebih tipis dan padat adalah...', options: ['Kerak benua', 'Kerak samudra', 'Litosfer', 'Astenosfer'], answer: 1, explain: 'Kerak samudra tebalnya sekitar 5–10 km dan lebih padat dibanding kerak benua.' },
+    { q: 'Proses pelapukan, erosi, lalu pengendapan merupakan awal terbentuknya batuan...', options: ['Sedimen', 'Beku', 'Metamorf', 'Magma'], answer: 0, explain: 'Material hasil pelapukan dan erosi yang mengendap lalu memadat menjadi batuan sedimen.' }
+  ],
+  project: {
+    title: 'Katalog Batuan di Sekitarku',
+    desc: 'Amati batuan di lingkungan sekitar (rumah, sekolah, atau tempat wisata), lalu susun katalog sederhana yang mengelompokkan batuan berdasarkan jenis dan asal pembentukannya.',
+    steps: ['Kumpulkan atau foto minimal 5 jenis batuan (jangan mengambil dari kawasan lindung).', 'Catat lokasi, warna, tekstur, dan ciri khas tiap batuan.', 'Kelompokkan menjadi batuan beku, sedimen, atau metamorf beserta alasannya.', 'Gambarkan siklus batuan dan tunjukkan posisi tiap contohmu.', 'Susun katalog dalam bentuk slide atau poster, lalu presentasikan.'],
+    rubric: ['Ketepatan klasifikasi batuan', 'Kelengkapan data pengamatan', 'Penjelasan siklus batuan', 'Kerapian dan kreativitas penyajian']
+  }
+};
+</script>
+<script src="module.js"></script>
+</body>
+</html>

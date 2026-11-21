@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul: Mantel Dalam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .glass-panel { background: rgba(30,41,59,.6); backdrop-filter: blur(16px); border: 1px solid rgba(71,85,105,.5); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); }
+        .tab-content { animation: fadeIn .4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+    </style>
+</head>
+<body>
+<script>
+window.MODULE = {
+  key: 'mantle',
+  title: 'Mantel Dalam (Mantle)',
+  subtitle: 'Pelajari lapisan plastis yang menjadi motor penggerak dinamika bumi.',
+  glow1: 'bg-red-600/10', glow2: 'bg-orange-600/10', dot: 'bg-red-500',
+  videoKey: 'mantel',
+  videoIntro: 'Tonton video untuk memahami bagaimana material di mantel bergerak dan memengaruhi lempeng tektonik.',
+  materi: `
+    <p>Mantel merupakan lapisan Bumi yang berada di antara kerak dan inti Bumi. Ketebalannya sekitar 2.900 km dan merupakan lapisan terbesar berdasarkan volume Bumi. Mantel tersusun terutama atas batuan silikat yang kaya magnesium dan besi.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Sifat Mantel</h3>
+    <p>Sebagian besar mantel bersifat padat, tetapi materialnya dapat mengalami deformasi dan bergerak sangat lambat dalam skala waktu geologi akibat suhu dan tekanan yang tinggi. Mantel dibedakan menjadi mantel atas (upper mantle) dan mantel bawah (lower mantle) berdasarkan kedalaman dan karakteristik materialnya.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Arus Konveksi</h3>
+    <p>Panas dari bagian dalam Bumi memanaskan batuan mantel di dekatnya sehingga bergerak naik. Setelah mendekati kerak, batuan mendingin dan bergerak turun kembali. Pergerakan material mantel ini berhubungan dengan dinamika internal Bumi dan berperan dalam pergerakan lempeng tektonik.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Hubungan dengan Vulkanisme</h3>
+    <p>Pergeseran lempeng menciptakan celah di litosfer yang memungkinkan magma naik ke permukaan bumi, menghasilkan fenomena vulkanisme.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Karakteristik Mantel</h3>
+    <ul class="list-disc list-inside space-y-1"><li>Lapisan terbesar berdasarkan volume Bumi.</li><li>Ketebalan sekitar 2.900 km.</li><li>Tersusun terutama atas batuan silikat kaya magnesium dan besi.</li><li>Sebagian besar padat, tetapi dapat berdeformasi secara perlahan.</li></ul>
+    <p class="text-slate-400 text-base">Fakta menarik: sebagian besar mantel Bumi adalah batuan padat, bukan lautan magma.</p>`,
+  quiz: [
+    { q: 'Lapisan terbesar Bumi berdasarkan volume adalah...', options: ['Kerak', 'Mantel', 'Inti luar', 'Inti dalam'], answer: 1, explain: 'Mantel memiliki ketebalan sekitar 2.900 km dan volume terbesar.' },
+    { q: 'Mantel tersusun terutama atas batuan...', options: ['Silikat kaya magnesium dan besi', 'Karbonat murni', 'Es dan gas', 'Logam cair'], answer: 0, explain: 'Mantel didominasi batuan silikat yang kaya magnesium dan besi.' },
+    { q: 'Pernyataan yang tepat tentang mantel adalah...', options: ['Seluruhnya lautan magma', 'Sebagian besar padat tetapi dapat berdeformasi perlahan', 'Berwujud gas', 'Lebih tipis dari kerak'], answer: 1, explain: 'Mantel sebagian besar padat, namun dapat bergerak sangat lambat dalam skala waktu geologi.' },
+    { q: 'Pergerakan material mantel berperan dalam...', options: ['Pembentukan awan', 'Pergerakan lempeng tektonik', 'Pasang surut laut', 'Pergantian siang dan malam'], answer: 1, explain: 'Dinamika mantel berhubungan dengan pergerakan lempeng tektonik.' },
+    { q: 'Mantel dibedakan menjadi...', options: ['Mantel luar dan inti', 'Mantel atas dan mantel bawah', 'Kerak dan litosfer', 'Astenosfer dan atmosfer'], answer: 1, explain: 'Pembagian ini berdasarkan kedalaman dan karakteristik materialnya.' }
+  ],
+  project: {
+    title: 'Simulasi Arus Konveksi',
+    desc: 'Buat simulasi sederhana arus konveksi untuk memahami bagaimana pergerakan material akibat panas dapat terjadi di dalam mantel.',
+    steps: ['Siapkan wadah kaca transparan berisi air, pewarna makanan, dan sumber panas ringan (lakukan dengan pendampingan guru atau orang dewasa).', 'Teteskan pewarna di dasar wadah, lalu panaskan perlahan salah satu sisi wadah.', 'Amati dan rekam arah gerak pewarna naik dan turun.', 'Gambar diagram arus konveksi hasil pengamatanmu.', 'Hubungkan hasilnya dengan pergerakan lempeng dan vulkanisme, lalu presentasikan.'],
+    rubric: ['Keselamatan dan kesesuaian prosedur', 'Ketepatan pengamatan dan diagram', 'Kaitan simulasi dengan konsep mantel', 'Kualitas presentasi']
+  }
+};
+</script>
+<script src="module.js"></script>
+</body>
+</html>

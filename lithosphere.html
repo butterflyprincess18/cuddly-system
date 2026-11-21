@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul: Mantel Luar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .glass-panel { background: rgba(30,41,59,.6); backdrop-filter: blur(16px); border: 1px solid rgba(71,85,105,.5); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); }
+        .tab-content { animation: fadeIn .4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+    </style>
+</head>
+<body>
+<script>
+window.MODULE = {
+  key: 'lithosphere',
+  title: 'Mantel Luar',
+  subtitle: 'Pelajari lempeng tektonik yang membentuk gunung, palung, dan gempa bumi.',
+  glow1: 'bg-orange-700/10', glow2: 'bg-red-600/10', dot: 'bg-orange-700',
+  videoKey: 'mantel',
+  videoIntro: 'Tonton animasi singkat untuk melihat bagaimana lempeng tektonik bergerak dan berinteraksi.',
+  materi: `
+    <p>Litosfer merupakan lapisan terluar Bumi yang bersifat kaku (rigid), terdiri atas kerak bumi dan bagian paling atas mantel yang juga kaku. Litosfer tidak berbentuk satu lapisan utuh, melainkan terbagi menjadi sejumlah lempeng tektonik yang bergerak secara perlahan.</p>
+    <p>Lempeng-lempeng litosfer bergerak di atas bagian mantel yang lebih lemah dan mampu mengalami deformasi, yang dikenal sebagai astenosfer. Pergerakan ini berperan dalam pembentukan pegunungan, gempa bumi, aktivitas vulkanik, dan perubahan permukaan Bumi.</p>
+    <ul class="list-disc list-inside space-y-1"><li>Bersifat relatif kaku.</li><li>Tersusun atas kerak bumi dan bagian paling atas mantel.</li><li>Terbagi menjadi lempeng-lempeng tektonik.</li><li>Bergerak dalam skala waktu geologi.</li></ul>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Tiga Jenis Batas Lempeng</h3>
+    <ul class="list-disc list-inside space-y-2">
+      <li><strong>Divergen</strong>: lempeng saling menjauh. Terbentuk punggung tengah samudra dan lembah retakan.</li>
+      <li><strong>Konvergen</strong>: lempeng saling mendekat dan bertumbukan. Terbentuk palung, pegunungan lipatan, dan gunung api (zona subduksi).</li>
+      <li><strong>Transform</strong>: lempeng saling bergeser mendatar. Sering memicu gempa, contohnya Sesar San Andreas.</li>
+    </ul>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Gempa Bumi</h3>
+    <p>Gempa tektonik terjadi saat energi yang tertahan di batas atau sesar lepas secara tiba-tiba. Titik pelepasan energi di dalam bumi disebut hiposentrum, sedangkan titik di permukaan tepat di atasnya disebut episentrum.</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Indonesia dan Cincin Api</h3>
+    <p>Indonesia berada di pertemuan tiga lempeng utama: Indo-Australia, Eurasia, dan Pasifik. Posisi ini membuat wilayah kita rawan gempa dan memiliki banyak gunung api, bagian dari Cincin Api Pasifik (Ring of Fire).</p>
+    <h3 class="text-xl font-semibold text-white mt-8 mb-3 border-l-4 border-emerald-500 pl-3">Mitigasi</h3>
+    <p>Mitigasi meliputi bangunan tahan gempa, tata ruang berbasis risiko, jalur evakuasi, dan latihan kesiapsiagaan.</p>`,
+  quiz: [
+    { q: 'Lempeng yang saling menjauh membentuk batas...', options: ['Konvergen', 'Divergen', 'Transform', 'Subduksi'], answer: 1, explain: 'Batas divergen terjadi ketika dua lempeng bergerak saling menjauh.' },
+    { q: 'Palung laut dan jalur gunung api terbentuk terutama di batas...', options: ['Divergen', 'Transform', 'Konvergen', 'Pasif'], answer: 2, explain: 'Zona subduksi pada batas konvergen membentuk palung dan busur gunung api.' },
+    { q: 'Titik di permukaan bumi tepat di atas pusat gempa disebut...', options: ['Hiposentrum', 'Episentrum', 'Isoseista', 'Seismograf'], answer: 1, explain: 'Episentrum berada di permukaan tepat di atas hiposentrum.' },
+    { q: 'Tiga lempeng utama yang bertemu di Indonesia adalah...', options: ['Eurasia, Pasifik, Indo-Australia', 'Amerika, Afrika, Eurasia', 'Antartika, Pasifik, Nazca', 'Filipina, Afrika, Eurasia'], answer: 0, explain: 'Indonesia berada di pertemuan lempeng Eurasia, Pasifik, dan Indo-Australia.' },
+    { q: 'Pergeseran lempeng secara mendatar disebut batas...', options: ['Transform', 'Divergen', 'Konvergen', 'Hotspot'], answer: 0, explain: 'Pada batas transform, lempeng bergeser horizontal satu sama lain.' }
+  ],
+  project: {
+    title: 'Peta Risiko Gempa dan Rencana Mitigasi',
+    desc: 'Buat peta sederhana yang menunjukkan jalur lempeng, gunung api, dan wilayah rawan gempa di Indonesia, lalu rancang rencana mitigasi untuk daerahmu.',
+    steps: ['Cari peta lempeng tektonik dan sebaran gunung api Indonesia dari sumber resmi (misalnya BMKG atau PVMBG).', 'Tandai batas lempeng, gunung api aktif, dan sesar utama pada peta.', 'Tentukan risiko gempa/gunung api di daerah tempat tinggalmu.', 'Susun rencana mitigasi: jalur evakuasi, titik kumpul, dan tas siaga bencana.', 'Presentasikan peta dan rencanamu di kelas.'],
+    rubric: ['Ketepatan peta dan sumber data', 'Analisis risiko daerah', 'Kelayakan rencana mitigasi', 'Kerapian dan presentasi']
+  }
+};
+</script>
+<script src="module.js"></script>
+</body>
+</html>
